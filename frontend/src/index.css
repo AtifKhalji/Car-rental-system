@@ -1,0 +1,146 @@
+/* 🔥 ROOT VARIABLES (KEEP CLEAN) */
+:root {
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --border: #2e303a;
+  --code-bg: #1f2028;
+  --accent: #22c55e;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color: var(--text);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 🔥 FULL PAGE BACKGROUND */
+body {
+  margin: 0;
+  font-family: var(--sans);
+
+  /* 🔥 BEAUTIFUL GRADIENT BG */
+  background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* 🔥 ROOT FIX (IMPORTANT) */
+#root {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔥 HEADINGS */
+h1,
+h2 {
+  font-family: var(--heading);
+  color: var(--text-h);
+  margin: 10px 0;
+}
+
+/* 🔥 CENTER CONTAINER (USE IN PAGES) */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+/* 🔥 CARD STYLE (LOGIN / REGISTER / PAYMENT / BOOKING) */
+.card {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+
+  padding: 25px;
+  border-radius: 12px;
+  width: 320px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* 🔥 INPUT */
+input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+/* 🔥 BUTTON */
+button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+
+  background: #22c55e;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #16a34a;
+}
+
+/* 🔥 CAR CARD */
+.car-card {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border-radius: 12px;
+  width: 250px;
+  text-align: center;
+
+  transition: 0.3s;
+}
+
+.car-card:hover {
+  transform: scale(1.05);
+}
+
+/* 🔥 LINKS */
+a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+/* 🔥 AUTH PAGES BACKGROUND */
+.auth-bg {
+  min-height: 100vh;
+
+  background: url("https://images.unsplash.com/photo-1503376780353-7e6692767b70")
+    no-repeat center center/cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🔥 DARK OVERLAY */
+.auth-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* 🔥 MAKE CONTENT ABOVE OVERLAY */
+.auth-content {
+  position: relative;
+  z-index: 1;
+}

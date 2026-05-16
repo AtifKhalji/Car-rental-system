@@ -145,13 +145,63 @@ export default function Admin() {
         }}
       >
         <div>
-          <h1 style={{ margin: 0, fontSize: "48px" }}>
-            Admin Dashboard
-          </h1>
-          <p style={{ margin: "8px 0 0", color: "#cbd5e1" }}>
-            Monitor users, bookings, and complaints from one place.
-          </p>
-        </div>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "14px"
+    }}
+  >
+    <img
+      src="/logo.png"
+      alt="RentSwift"
+      style={{
+        width: "75px",
+        height: "75px",
+        objectFit: "contain"
+      }}
+    />
+
+    <div>
+      <h1
+        style={{
+          margin: 0,
+          fontSize: "42px",
+          fontWeight: "800",
+          lineHeight: "1"
+        }}
+      >
+        <span style={{ color: "white" }}>
+          Rent
+        </span>
+
+        <span style={{ color: "#22c55e" }}>
+          Swift
+        </span>
+      </h1>
+
+      <p
+        style={{
+          marginTop: "6px",
+          color: "#cbd5e1",
+          fontSize: "14px",
+          letterSpacing: "1px"
+        }}
+      >
+        Your Journey, Our Priority 🚗
+      </p>
+    </div>
+  </div>
+
+  <p
+    style={{
+      marginTop: "18px",
+      color: "#cbd5e1"
+    }}
+  >
+    Admin Dashboard Control Panel
+  </p>
+</div>
 
         <button
           onClick={logout}

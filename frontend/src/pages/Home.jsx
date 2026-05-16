@@ -41,7 +41,7 @@ function Home() {
 
   useEffect(() => {
     getCars()
-      .then(res => setCars(res.data))
+      .then((res) => setCars(res.data))
       .catch(() => alert("Failed to load cars"));
   }, []);
 
@@ -70,6 +70,7 @@ function Home() {
     if (!complaint) return alert("Write complaint");
 
     await sendComplaint({ message: complaint });
+
     alert("Complaint submitted ✅");
     setComplaint("");
   };
@@ -80,26 +81,87 @@ function Home() {
         minHeight: "100vh",
         padding: "20px",
         color: "white",
-        background:
-          "linear-gradient(to right, #020617, #0f172a)"
+        background: "linear-gradient(to right, #020617, #0f172a)"
       }}
     >
       <style>{gridStyles}</style>
 
       {/* HEADER */}
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "30px",
+          flexWrap: "wrap",
+          gap: "20px"
+        }}
+      >
+        {/* LOGO + BRAND */}
         <div>
-          <h1>🚗 Dashboard</h1>
-          <p>Role: {role}</p>
+          <img
+            src="/logo.png"
+            alt="RentSwift"
+            style={{
+              width: "230px",
+              objectFit: "contain"
+            }}
+          />
+
+          <p
+            style={{
+              marginTop: "5px",
+              color: "#94a3b8",
+              fontSize: "14px",
+              letterSpacing: "1px"
+            }}
+          >
+            Your Journey, Our Priority 🚗
+          </p>
+
+          <p
+            style={{
+              marginTop: "10px",
+              fontSize: "18px"
+            }}
+          >
+            Role: <b>{role}</b>
+          </p>
         </div>
 
-        <div>
-          <button onClick={() => navigate("/bookings")}>
+        {/* ACTION BUTTONS */}
+        <div
+          style={{
+            display: "flex",
+            gap: "12px"
+          }}
+        >
+          <button
+            onClick={() => navigate("/bookings")}
+            style={{
+              background: "#22c55e",
+              border: "none",
+              padding: "12px 20px",
+              borderRadius: "10px",
+              color: "white",
+              fontWeight: "bold",
+              cursor: "pointer"
+            }}
+          >
             My Bookings
           </button>
+
           <button
             onClick={logout}
-            style={{ background: "#ef4444" }}
+            style={{
+              background: "#ef4444",
+              border: "none",
+              padding: "12px 20px",
+              borderRadius: "10px",
+              color: "white",
+              fontWeight: "bold",
+              cursor: "pointer"
+            }}
           >
             Logout
           </button>
@@ -109,25 +171,28 @@ function Home() {
       {/* CUSTOMER */}
       {role === "customer" && (
         <>
-          <h2>Customer Panel</h2>
-
-          <div
-            className="cars-grid"
+          <h2
+            style={{
+              marginBottom: "20px"
+            }}
           >
+            Available Cars
+          </h2>
+
+          <div className="cars-grid">
             {cars.map((car) => (
               <div
                 key={car.id}
                 style={{
                   padding: "15px",
-                  borderRadius: "10px",
-                  background: "#020617"
+                  borderRadius: "16px",
+                  background: "#020617",
+                  border: "1px solid #1e293b",
+                  boxShadow: "0 5px 20px rgba(0,0,0,0.3)"
                 }}
               >
                 <img
-                  src={
-                    car.image ||
-                    fallbackCarImage
-                  }
+                  src={car.image || fallbackCarImage}
                   alt={car.brand}
                   onError={(e) => {
                     if (e.currentTarget.src !== fallbackCarImage) {
@@ -136,21 +201,42 @@ function Home() {
                   }}
                   style={{
                     width: "100%",
-                    height: "150px",
+                    height: "180px",
                     objectFit: "cover",
-                    borderRadius: "10px"
+                    borderRadius: "12px"
                   }}
                 />
 
-                <h3>{car.brand}</h3>
-                <p>{car.fuelType}</p>
-                <h3>₹{car.pricePerDay}/day</h3>
+                <h3
+                  style={{
+                    marginTop: "15px"
+                  }}
+                >
+                  {car.brand}
+                </h3>
+
+                <p
+                  style={{
+                    color: "#cbd5e1"
+                  }}
+                >
+                  {car.fuelType}
+                </p>
+
+                <h3
+                  style={{
+                    color: "#22c55e"
+                  }}
+                >
+                  ₹{car.pricePerDay}/day
+                </h3>
 
                 <div
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",
-                    gap: "8px"
+                    gap: "8px",
+                    marginTop: "15px"
                   }}
                 >
                   <input
@@ -166,7 +252,9 @@ function Home() {
                     }
                     style={{
                       minWidth: 0,
-                      padding: "8px"
+                      padding: "10px",
+                      borderRadius: "8px",
+                      border: "none"
                     }}
                   />
 
@@ -183,14 +271,24 @@ function Home() {
                     }
                     style={{
                       minWidth: 0,
-                      padding: "8px"
+                      padding: "10px",
+                      borderRadius: "8px",
+                      border: "none"
                     }}
                   />
 
                   <button
                     onClick={() => handleBooking(car)}
                     style={{
-                      gridColumn: "1 / -1"
+                      gridColumn: "1 / -1",
+                      background: "#22c55e",
+                      border: "none",
+                      padding: "12px",
+                      borderRadius: "10px",
+                      color: "white",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      marginTop: "5px"
                     }}
                   >
                     Book Now
@@ -201,14 +299,44 @@ function Home() {
           </div>
 
           {/* COMPLAINT */}
-          <h3 style={{ marginTop: "30px" }}>Complaint</h3>
-          <textarea
-            value={complaint}
-            onChange={(e) => setComplaint(e.target.value)}
-          />
-          <button onClick={handleComplaint}>
-            Submit Complaint
-          </button>
+          <div
+            style={{
+              marginTop: "50px"
+            }}
+          >
+            <h3>Complaint</h3>
+
+            <textarea
+              value={complaint}
+              onChange={(e) => setComplaint(e.target.value)}
+              placeholder="Write your complaint here..."
+              style={{
+                width: "100%",
+                minHeight: "120px",
+                padding: "15px",
+                borderRadius: "12px",
+                border: "none",
+                marginTop: "10px",
+                marginBottom: "15px",
+                fontSize: "16px"
+              }}
+            />
+
+            <button
+              onClick={handleComplaint}
+              style={{
+                background: "#f59e0b",
+                border: "none",
+                padding: "12px 24px",
+                borderRadius: "10px",
+                color: "white",
+                fontWeight: "bold",
+                cursor: "pointer"
+              }}
+            >
+              Submit Complaint
+            </button>
+          </div>
         </>
       )}
     </div>

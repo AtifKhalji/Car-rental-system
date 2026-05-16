@@ -99,29 +99,61 @@ function Home() {
       >
         {/* LOGO + BRAND */}
         <div>
-          <img
-            src="/logo.png"
-            alt="RentSwift"
+          <div
             style={{
-              width: "230px",
-              objectFit: "contain"
-            }}
-          />
-
-          <p
-            style={{
-              marginTop: "5px",
-              color: "#94a3b8",
-              fontSize: "14px",
-              letterSpacing: "1px"
+              display: "flex",
+              alignItems: "center",
+              gap: "14px"
             }}
           >
-            Your Journey, Our Priority 🚗
-          </p>
+            {/* CAR LOGO */}
+            <img
+              src="/logo.png"
+              alt="RentSwift"
+              style={{
+                width: "75px",
+                height: "75px",
+                objectFit: "contain",
+                borderRadius: "12px"
+              }}
+            />
 
+            {/* BRAND TEXT */}
+            <div>
+              <h1
+                style={{
+                  margin: 0,
+                  fontSize: "42px",
+                  fontWeight: "800",
+                  lineHeight: "1"
+                }}
+              >
+                <span style={{ color: "white" }}>
+                  Rent
+                </span>
+
+                <span style={{ color: "#22c55e" }}>
+                  Swift
+                </span>
+              </h1>
+
+              <p
+                style={{
+                  marginTop: "6px",
+                  color: "#cbd5e1",
+                  fontSize: "14px",
+                  letterSpacing: "1px"
+                }}
+              >
+                Your Journey, Our Priority 🚗
+              </p>
+            </div>
+          </div>
+
+          {/* ROLE */}
           <p
             style={{
-              marginTop: "10px",
+              marginTop: "18px",
               fontSize: "18px"
             }}
           >
